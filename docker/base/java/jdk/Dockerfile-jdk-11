@@ -1,0 +1,7 @@
+# openjdk 11
+FROM openjdk:11.0.7-slim
+ENV TZ=Africa/Accra
+RUN ln -snf /usr/share/zoneinfo/${TZ} /etc/localtime
+RUN apt-get update && apt-get upgrade -y && apt-get autoremove -y
+RUN which curl || apt-get install -y --no-install-recommends curl
+ADD scripts /scripts

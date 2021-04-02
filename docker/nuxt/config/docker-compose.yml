@@ -1,0 +1,12 @@
+version: '3.4'
+
+services:
+  example-service:
+    image: example-service:staging-20200127-a754da2d1c
+    build:
+      context: .
+      args:
+        - 'APP_NPM_BUILD_COMMANDS=build:docker:server'
+        - 'APP_NPM_BUILD_COMMAND_DELIMITER=@@DIB_APP_NPM_BUILD_COMMAND_DELIMITER@@'
+    ports:
+      - 5000

@@ -1,0 +1,30 @@
+version: "3.4"
+
+services:
+  example-service:
+    labels:
+      kompose.image-pull-secret: your-builder-script
+      kompose.image-pull-policy: "Always"
+      kompose.service.expose: "service-test.example.com"
+      kompose.service.type: nodeport
+      kompose.service.expose.tls-secret: "example-service-staging"
+      kompose.service.nodeport.port: "5000"
+    image: container-registry.example.com/example-project/example-service:staging-20201112-10ea72f745
+    container_name: example-service
+    hostname: example-service
+    ports:
+      - 5000:5000
+    env_file:
+      - ./example-project-springboot-project.env
+      - ./example-project-springboot-staging-common.env
+      - ./example-service-service.env
+      - ./example-service-app.env
+    network_mode: host
+    deploy:
+      replicas: 1
+    healthcheck:
+      test: ["CMD", "/scripts/healthcheck.sh", "example-service", "5000", "/api/health"]
+      start_period: 5m
+      interval: 1m
+      timeout: 10s
+      retries: 3
