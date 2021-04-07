@@ -19,12 +19,12 @@ services:
       - ./@@DIB_APP_PROJECT@@-@@DIB_APP_FRAMEWORK@@-@@DIB_APP_ENVIRONMENT@@-common.env
       - ./@@DIB_APP_IMAGE@@-service.env
       - ./@@DIB_APP_IMAGE@@-app.env
-    network_mode: @@DIB_NETWORK_MODE@@
+    network_mode: @@DIB_DOCKER_COMPOSE_NETWORK_MODE@@
     deploy:
-      replicas: @@DIB_DEPLOY_REPLICAS@@
+      replicas: @@DIB_DOCKER_COMPOSE_DEPLOY_REPLICAS@@
 #    healthcheck:
 #      test: ["CMD", "/scripts/healthcheck.sh", "@@DIB_APP_IMAGE@@", "@@DIB_KOMPOSE_SERVICE_NODEPORT_PORT@@", "/api/health"]
-#      start_period: @@DIB_HEALTHCHECK_START_PERIOD@@
-#      interval: @@DIB_HEALTHCHECK_INTERVAL@@
-#      timeout: @@DIB_HEALTHCHECK_TIMEOUT@@
-#      retries: @@DIB_HEALTHCHECK_RETRIES@@
+#      start_period: @@DIB_DOCKER_COMPOSE_HEALTHCHECK_START_PERIOD@@
+#      interval: @@DIB_DOCKER_COMPOSE_HEALTHCHECK_INTERVAL@@
+#      timeout: @@DIB_DOCKER_COMPOSE_HEALTHCHECK_TIMEOUT@@
+#      retries: @@DIB_DOCKER_COMPOSE_HEALTHCHECK_RETRIES@@
