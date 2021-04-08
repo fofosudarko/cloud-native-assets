@@ -13,7 +13,7 @@ services:
     container_name: @@DIB_APP_IMAGE@@
     hostname: @@DIB_APP_IMAGE@@
     ports:
-      - @@DIB_KOMPOSE_SERVICE_NODEPORT_PORT@@:@@DIB_KOMPOSE_SERVICE_NODEPORT_PORT@@
+      - @@DIB_APP_PORT@@:@@DIB_APP_PORT@@
     env_file:
       - ./@@DIB_APP_PROJECT@@-@@DIB_APP_FRAMEWORK@@-project.env
       - ./@@DIB_APP_PROJECT@@-@@DIB_APP_FRAMEWORK@@-@@DIB_APP_ENVIRONMENT@@-common.env
