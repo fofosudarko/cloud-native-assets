@@ -9,7 +9,7 @@ services:
       kompose.service.expose: "@@DIB_KOMPOSE_SERVICE_EXPOSE@@"
       kompose.service.expose.tls-secret: "@@DIB_KOMPOSE_SERVICE_EXPOSE_TLS_SECRET@@"
       kompose.service.nodeport.port: "@@DIB_KOMPOSE_SERVICE_NODEPORT_PORT@@"
-    image: @@DIB_CONTAINER_REGISTRY@@/@@DIB_APP_PROJECT@@/@@DIB_APP_IMAGE@@:@@DIB_APP_IMAGE_TAG@@
+    image: @@DIB_APPS_CONTAINER_REGISTRY@@/@@DIB_APP_PROJECT@@/@@DIB_APP_IMAGE@@:@@DIB_APP_IMAGE_TAG@@
     container_name: @@DIB_APP_IMAGE@@
     hostname: @@DIB_APP_IMAGE@@
     ports:
