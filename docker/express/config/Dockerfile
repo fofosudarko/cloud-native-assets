@@ -1,8 +1,9 @@
 # docker node.js config
 FROM container-registry.example.com/library/nodejs-12-lts:latest
+ARG PACKAGER=npm
 WORKDIR /app
 COPY package.json /app/package.json
-RUN cd /app; npm install --production
+RUN cd /app; ${PACKAGER} install --production
 COPY . /app
 
 ENV NODE_ENV=

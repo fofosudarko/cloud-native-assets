@@ -8,9 +8,9 @@ services:
       args:
         - 'APP_BASE_HREF=/'
         - 'APP_DEPLOY_URL=/'
-        - 'APP_NPM_BUILD_COMMANDS=build:docker'
+        - 'APP_PACKAGER_BUILD_COMMANDS=build:docker'
         - 'APP_BUILD_CONFIGURATION=staging-docker'
-        - 'APP_NPM_BUILD_COMMAND_DELIMITER=,'
+        - 'APP_PACKAGER_BUILD_COMMAND_DELIMITER=,'
         - 'APP_REPO=example-service'
     ports:
       - 5000

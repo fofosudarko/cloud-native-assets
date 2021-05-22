@@ -6,7 +6,7 @@ services:
     build:
       context: .
       args:
-        - 'APP_NPM_BUILD_COMMANDS=build:docker:staging'
-        - 'APP_NPM_BUILD_COMMAND_DELIMITER=,'
+        - 'APP_PACKAGER_BUILD_COMMANDS=build:docker:staging'
+        - 'APP_PACKAGER_BUILD_COMMAND_DELIMITER=,'
     ports:
       - 5000
