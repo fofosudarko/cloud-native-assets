@@ -3,10 +3,12 @@ FROM openjdk:11-jdk-slim as first_build
 WORKDIR /app
 COPY gradlew gradlew
 COPY gradle gradle
+COPY settings.gradle settings.gradle
+COPY build.gradle build.gradle
 RUN ./gradlew clean
 #COPY keystores keystores
 COPY src src
-RUN ./gradlew --build-cache bootJar
+RUN ./gradlew --build-cache --no-deamon clean bootJar
 RUN mkdir -p build/libs/dependency && (cd build/libs/dependency; jar -xf ../*.jar)
 
 FROM openjdk:11-jre-slim

@@ -3,20 +3,20 @@ FROM openjdk:11-jdk-slim as first_build
 WORKDIR /app
 COPY gradlew gradlew
 COPY gradle gradle
+COPY settings.gradle settings.gradle
+COPY build.gradle build.gradle
 RUN ./gradlew clean
 #COPY keystores keystores
 COPY src src
-RUN ./gradlew --build-cache bootJar
-RUN mkdir -p build/libs/dependency && (cd build/libs/dependency; jar -xf ../*.jar)
+RUN ./gradlew --build-cache --no-deamon clean bootJar
 
 FROM openjdk:11-jre-slim
 VOLUME [ "/tmp" ]
 ARG WORKSPACE=/app
-ARG DEPENDENCY=${WORKSPACE}/build/libs/dependency
 ARG APP_NAME=example-service
 
 #COPY --from=first_build ${WORKSPACE}/keystores /home/example-project/keystores
-COPY --from=build ${WORKSPACE}/build/libs/dependency/*.jar ${WORKSPACE}/${APP_NAME}.jar
+COPY --from=build ${WORKSPACE}/build/libs/*.jar ${WORKSPACE}/${APP_NAME}.jar
 
 # env
 ENV APP_SERVER_HOST=
